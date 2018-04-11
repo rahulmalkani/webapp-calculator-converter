@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <html>
+
+<head>
+  <title>Web calculator</title>
+  <link rel="stylesheet" type="text/css" href="calculator.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Fixed Header -->
+  <div id="header">
+    <span id="openButton" style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776;</span>
+  </div>
+  <!-- Sidebar left with navugation menu -->
+  <div id="sidebar">
+    <!-- Sidebar left open button -->
+    <span href="javascript:void(0)" class="close" onclick="sidebarClose()">&times;</span>
+    <!-- Sidebar elements -->
+    <div id="sidebarContent">
+      <span class="sidebarHeadings"> Calculator </span>
+      <a href="javascript:void(0)" onclick="standardcalculator()">Standard</a>
+      <a href="javascript:void(0)" onclick="scientificcalculator()">Scientific</a>
+      <a href="javascript:void(0)" onclick="BMIcalculator()">BMI</a>
+      <a href="javascript:void(0)" onclick="percentagecalculator()">Percentage</a>
+      <span class="sidebarHeadings"> Converter </span>
+      <a href="javascript:void(0)" onclick="volumeconverter()">Volume</a>
+      <a href="javascript:void(0)" onclick="lengthconverter()">Length</a>
+      <a href="javascript:void(0)" onclick="heightconverter()">Height</a>
+      <a href="javascript:void(0)" onclick="weightconverter()">Weight</a>
+      <a href="javascript:void(0)" onclick="tempretureconverter()">Tempreture</a>
+      <a href="javascript:void(0)">Area</a>
+      <a href="javascript:void(0)" onclick="speedconverter()">Speed</a>
+      <a href="javascript:void(0)">Power</a>
+      <a href="javascript:void(0)" onclick="dataconverter()">Data</a>
+      <a href="javascript:void(0)">Pressure</a>
+      <a href="javascript:void(0)">Angle</a>
+    </div>
+  </div>
+  <!-- Main body and calculator -->
+  <div id="main">
+    <div id="container">
+      <div class="box">
+        <span id="brand">Web Calculator RM-041</span>
+        <div class="display">
+          <input type="text" readonly maxlength="21" id="d" placeholder="888888888888" style="font-family: 'Orbitron', sans-serif;">
+        </div>
+        <span id="solar">
+            <input type="text" readonly>
+          </span>
+        <div class="keys">
+          <p>
+            <button class="button-pink" onclick='sqr()'>x<sup>2</sup></button>
+            <button class="button-pink" onclick='cube()'>x<sup>3</sup></button>
+            <button class="button-pink" onclick='power()'>x<sup>y</sup></button>
+            <button class="button-pink" onclick='fact()'>x!</button>
+            <button id="on" onclick='backspace()'>⌫</button>
+          </p>
+          <p>
+            <button class="button-black" onclick='v("7")'>7</button>
+            <button class="button-black" onclick='v("8")'>8</button>
+            <button class="button-black" onclick='v("9")'>9</button>
+            <button class="button-pink" onclick='v("/")'>÷</button>
+            <button class="button-pink" onclick='c("")'>C</button>
+          </p>
+          <p>
+            <button class="button-black" onclick='v("4")'>4</button>
+            <button class="button-black" onclick='v("5")'>5</button>
+            <button class="button-black" onclick='v("6")'>6</button>
+            <button class="button-pink" onclick='v("*")'>×</button>
+            <button class="button-pink" onclick='squrRoot()'>√</button>
+          </p>
+          <p>
+            <button class="button-black" onclick='v("1")'>1</button>
+            <button class="button-black" onclick='v("2")'>2</button>
+            <button class="button-black" onclick='v("3")'>3</button>
+            <button class="button-pink" onclick='v("-")'>-</button>
+            <button class="button-pink" onclick='v("%")'>%</button>
+          </p>
+          <p>
+            <button class="button-black" onclick='v("0")'>0</button>
+            <button class="button-black" onclick='v("00")'>00</button>
+            <button class="button-black" onclick='v(".")'>.</button>
+            <button class="button-pink" onclick='v("+")'>+</button>
+            <button id="equals" onclick='e()'>=</button>
+          </p>
+        </div>
+      </div>
+      <!-- Sidebar Right with content according to user's choice from sidebar left -->
+      <div id="sidebarRight">
+        <p>
+          <a href="javascript:void(0)" class="close" onclick="sidebarRightClose()">&times;</a>
+          <span id="sidebarRightHeading"></span>
+          <div id="sidebarRightContent">
+            <!-- Scientific calculator -->
+            <div id="scientificBlock">
+              <p>
+                <input id="scientificInput" type="number" placeholder="Enter here..">
+                <input id="scientificAnswer" type="number" readonly>
+              </p>
+              <input id="clearButton" type="button" value="X" onclick="clear("")">
+              <p>
+                <button id="sin" class="marginButton" onclick="sinC()">Sin</button>
+                <button id="cos" onclick="cosC()">Cos</button>
+                <button id="tan" onclick="tanC()">Tan</button> 
+              </p>
+              <p>
+                <button id="csc" class="marginButton" onclick="cscC()">Csc</button>
+                <button id="sec" onclick="secC()">Sec</button>
+                <button is="cot" onclick="cotC()">Cot</button>
+                
+              </p>
+            </div>
+            <!-- Volume conversion code -->
+            <div id="VolumeBlock">
+              <label>Litre</label>
+              <input id="Litre" type="number" placeholder="Litre" oninput="litre2Others(this.value)" onchange="litre2Others(this.value)">
+              <label>Mililetre</label>
+              <input id="Mililitre" type="number" placeholder="Mililitre" oninput="mili2others(this.value)" onchange="mili2others(this.value)">
+              <label>DecaLitre</label>
+              <input id="Decalitre" type="number" placeholder="Decalitre" oninput="deca2others(this.value)" onchange="deca2others(this.value)">
+              <label>Gallon</label>
+              <input id="Gallon" type="number" placeholder="Gallon" oninput="gallon2others(this.value)" onchange="gallon2others(this.value)">
+
+            </div>
+            <!-- Tempreture conversion -->
+            <div id="tempretureBlock">
+              <label>Fahrenheit</label>
+              <input id="fahrenheit" type="number" placeholder="Fahrenheit" oninput="f2Others(this.value)" onchange="f2Others(this.value)">
+              <label>Celsius</label>
+              <input id="celsius" type="number" placeholder="Celsius" oninput="c2Others(this.value)" onchange="c2Others(this.value)">
+              <label>Kelvin</label>
+              <input id="kelvin" type="number" placeholder="Kelvin" oninput="k2Others(this.value)" onchange="k2Others(this.value)">
+            </div>
+            <!-- Height COnversion -->
+            <div id="heightBlock">
+              <label>Feet</label>
+              <input id="feets" type="number" placeholder="feets" oninput="heightInfeet(this.value)" onchange="heightInfeet(this.value)">
+              <label>Inches</label>
+              <input id="inches" type="number" placeholder="inches" oninput="heightInInches(this.value)" onchange="heightInInches(this.value)">
+              <span> OR </span>
+              <label>centimeters</label>
+              <input id="cmInput" type="number" placeholder="centimeters" oninput="heightInCm(this.value)" onchange="heightInCm(this.value)">
+            </div>
+            <!-- Weight Conversion -->
+            <div id="weightBlock">
+              <label>Pounds</label>
+              <input id="pounds" type="number" placeholder="Pounds" oninput="p2Others(this.value)" onchange="p2Others(this.value)">
+              <label>Kilograms</label>
+              <input id="kilograms" type="number" placeholder="kilograms" oninput="KG2Others(this.value)" onchange="KG2Others(this.value)">
+              <label>Ounces</label>
+              <input id="ounces" type="number" placeholder="ounces" oninput="o2Others(this.value)" onchange="o2Others(this.value)">
+              <label>Grams</label>
+              <input id="grams" type="number" placeholder="grams" oninput="g2Others(this.value)" onchange="g2Others(this.value)">
+              <label>Stones</label>
+              <input id="stones" type="number" placeholder="stones" oninput="s2Others(this.value)" onchange="s2Others(this.value)">
+            </div>
+            <!-- Length Conversion -->
+            <div id="lengthBlock">
+              <label>Miles</label>
+              <input id="miles" type="number" placeholder="Miles" oninput="miles2Others(this.value)" onchange="miles2Others(this.value)">
+              <label>Kilometers</label>
+              <input id="kilometers" type="number" placeholder="kilometers" oninput="km2Others(this.value)" onchange="km2Others(this.value)">
+              <label>Yards</label>
+              <input id="yards" type="number" placeholder="Yards" oninput="yards2Others(this.value)" onchange="yards2Others(this.value)">
+              <label>Meters</label>
+              <input id="meters" type="number" placeholder="Meters" oninput="meters2Others(this.value)" onchange="meters2Others(this.value)">
+              <label>Feets</label>
+              <input id="feet" type="number" placeholder="Feets" oninput="feets2Others(this.value)" onchange="feets2Others(this.value)">
+              <label>Inches</label>
+              <input id="inch" type="number" placeholder="Inches" oninput="inches2Others(this.value)" onchange="inches2Others(this.value)">
+              <label>Centimeters</label>
+              <input id="centimeters" type="number" placeholder="Centimeters" oninput="cm2Others(this.value)" onchange="cm2Others(this.value)">
+            </div>
+            <!-- BMI Calculator -->
+            <div id="BMIBlock">
+              <label>Weight(kg)</label>
+              <input id="weight" type="number" placeholder="weight(kg)">
+              <label>Height(cm)</label>
+              <input id="height" type="number" placeholder="height(cm)">
+              <button onclick="calculateBMI()">calculate</button>
+              <span id="resultOfBMI"></span>
+              <span id="bodyType"> </span>
+            </div>
+            <!-- Percentage block -->
+            <div id="percentageBlock">
+              <label> what is  </label>
+              <input id="whatPercent" type="number" placeholder="n%">
+              <label> % of </label>
+              <input id="of" type="number" placeholder="n">
+              <button id="percentageCalculate" onclick="calculatePercentage()"> calculate </button>
+              <input id="answer" type="number" readonly>
+              <hr>
+              <input id="_dash" type="number" placeholder="n">
+              <label>is what percent of</label>
+              <input id="percentOf" type="number" placeholder="n">
+              <button id="calculatePercentage" onclick="percentageCalculate()"> calculate </button>
+              <input id="Answer" type="number" readonly>
+            </div>
+            <!-- Speed conversion code -->
+            <div id="speedBlock">
+              <label>MPH</label>
+              <input id="mph" type="number" placeholder="MPH" oninput="mph2Others(this.value)" onchange="mph2Others(this.value)">
+              <label>KPH</label>
+              <input id="kph" type="number" placeholder="KPH" oninput="kph2Others(this.value)" onchange="kph2Others(this.value)">
+              <label>Knots</label>
+              <input id="knots" type="number" placeholder="Knots" oninput="knots2Others(this.value)" onchange="knots2Others(this.value)">
+              <label>Mach</label>
+              <input id="mach" type="number" placeholder="Mach" oninput="mach2Others(this.value)" onchange="mach2Others(this.value)">
+            </div>
+            <!-- Data conversion -->
+            <div id="dataBlock">
+              <label>Bytes</label>
+              <input id="bytes" type="number" placeholder="Bytes" oninput="bytes2Others(this.value)" onchange="bytes2Others(this.value)">
+              <label>Kilobytes</label>
+              <input id="kb" type="number" placeholder="Kilobytes" oninput="kb2Others(this.value)" onchange="kb2Others(this.value)">
+              <label>Megabytes</label>
+              <input id="mb" type="number" placeholder="Megabytes" oninput="mb2Others(this.value)" onchange="mb2Others(this.value)">
+              <label>Gigabytess</label>
+              <input id="gb" type="number" placeholder="Gigabytes" oninput="gb2Others(this.value)" onchange="gb2Others(this.value)">
+            </div>
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+  
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
